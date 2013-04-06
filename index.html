@@ -54,7 +54,7 @@ var chart;
 var graphData = {};
 
 $.ajax({
-    url : 'http://brainscan.com:3000/waves',
+    url : 'http://localhost:3000/waves',
     dataType : "jsonp",
     timeout : 10000,
     async: false,
@@ -67,7 +67,6 @@ $.ajax({
 		
 		  chart
 		      .x(function(d,i) { return i })
-		
 		
 		  chart.xAxis // chart sub-models (ie. xAxis, yAxis, etc) when accessed directly, return themselves, not the parent chart, so need to chain separately
 		      .tickFormat(d3.format(',.1f'));

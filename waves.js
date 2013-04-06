@@ -1,8 +1,8 @@
 var express = require('express');
- 
-var app = express();
-
+var fs = require('fs');
 var mongoose = require('mongoose');
+
+var app = express();
 mongoose.connect('mongodb://localhost/brainscan');
 
 var waveSchema = mongoose.Schema({
@@ -31,6 +31,24 @@ var waveSchema = mongoose.Schema({
 })
 
 var Wave = mongoose.model('Wave', waveSchema)
+
+app.use(express.static(__dirname + '/'));
+/*
+app.get('/', function(req, res) {
+   
+    fs.readFile('./index.html', function (err, data) {
+        
+        if (err) {
+            throw err;
+        }
+        
+        res.setHeader('Content-Type', 'text/html');
+        res.send(data);
+        
+    });
+ 
+});
+*/
 
 app.get('/waves', function(req, res) {
     
